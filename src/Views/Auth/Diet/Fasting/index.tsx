@@ -7,21 +7,24 @@ import * as BeAPI from "../../../../API";
 import Form from "../../../../Components/Form";
 import MonthlyCalendar from "../../../../Components/PageView/MonthlyCalendar";
 import PageSection from "../../../../Components/PageView/PageSection";
-import { dateTotTimeFormat } from "../../../../Utils/consts";
+import { dateTotTimeFormat, timeFormat } from "../../../../Utils/consts";
+import i18n from "../../../../i18n";
 
-export interface wateringProps {
+export interface fastingProps {
   id?: string;
-  timestamp: string;
-  quantity: number;
+  date: string;
+  breakTime: string;
+  note?: string;
 }
 
-export const renderWateringUI =
-  (onDelete?: Function) => (event: wateringProps, date: string, id: string) => {
-    return (
+export const renderFastingUI =
+  (onDelete?: Function) => (event: fastingProps, date: string, id: string) =>
+    (
       <div>
         {date ? (
           <span className="d-block bg-dark text-white p-2 my-2">
-            @ {dateTotTimeFormat(event.timestamp)}{" "}
+            {i18n.t("Services.Diet.Fasting.FastBreakingTime")} @{" "}
+            {timeFormat(event.breakTime)}{" "}
             {onDelete && (
               <FontAwesomeIcon
                 icon={faTrashCan}
@@ -34,29 +37,22 @@ export const renderWateringUI =
         ) : (
           ""
         )}
-        <small>{event.quantity} Cup(s)</small>
+        <small>{event.note}</small>
       </div>
     );
-  };
 
-const Watering = () => {
+const Fasting = () => {
   const { t } = useTranslation();
 
-  const [data, setData] = useState<wateringProps[]>([]);
+  const [data, setData] = useState<fastingProps[]>([]);
 
   const getData = () =>
-    BeAPI.getAll("watering")
-      .then((res: wateringProps[]) =>
+    BeAPI.getAll("fasting")
+      .then((res: fastingProps[]) =>
         setData(
-          res
-            .map(({ timestamp, ...rest }) => ({
-              ...rest,
-              timestamp,
-              date: moment(timestamp).format("yyyy-MM-DD"),
-            }))
-            ?.sort((a: wateringProps, b: wateringProps) =>
-              a.timestamp > b.timestamp ? -1 : 1
-            )
+          res?.sort((a: fastingProps, b: fastingProps) =>
+            a.date > b.date ? -1 : 1
+          )
         )
       )
       .catch((err) => console.log({ err }));
@@ -67,46 +63,50 @@ const Watering = () => {
 
   const formInputs = [
     {
-      name: "timestamp",
-      label: t("Services.Diet.Watering.Time"),
-      type: "datetime-local",
+      name: "date",
+      label: t("Services.Diet.Fasting.Date"),
+      type: "date",
       required: true,
     },
     {
-      name: "quantity",
-      label: t("Services.Diet.Watering.Quantity"),
-      type: "number",
-      step: 0.1,
+      name: "breakTime",
+      label: t("Services.Diet.Fasting.FastBreakingTime"),
+      type: "time",
+      required: true,
+    },
+    {
+      name: "note",
+      label: t("Services.Diet.Fasting.Notes"),
     },
   ];
 
-  const onSubmit = (values: wateringProps) => {
-    BeAPI.create("watering", values)
+  const onSubmit = (values: fastingProps) => {
+    BeAPI.create("fasting", values)
       .then(() => {
         getData();
       })
-      .catch((err: any) => console.log({ err }));
+      .catch((err) => console.log({ err }));
   };
 
   const onDelete = (id: string) =>
-    BeAPI.remove("watering", id)
+    BeAPI.remove("fasting", id)
       .then(() => {
         getData();
       })
-      .catch((err: any) => console.log({ err }));
+      .catch((err) => console.log({ err }));
 
   return (
     <PageSection
-      title={t("Services.Diet.Watering.Watering")}
-      desc={t("Services.Diet.Watering.Desc")}
+      title={t("Services.Diet.Fasting.Fasting")}
+      desc={t("Services.Diet.Fasting.Desc")}
     >
       <Fragment>
         <Form inputs={formInputs} onSubmit={onSubmit} />
 
-        <MonthlyCalendar data={data} renderEvent={renderWateringUI(onDelete)} />
+        <MonthlyCalendar data={data} renderEvent={renderFastingUI(onDelete)} />
       </Fragment>
     </PageSection>
   );
 };
 
-export default Watering;
+export default Fasting;

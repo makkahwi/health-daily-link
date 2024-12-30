@@ -84,7 +84,6 @@ const WalkExercises = () => {
   };
 
   useEffect(() => {
-    // scheduleAPI.getAll().then((res: MealViewProps[][]) => setData(res));
     getData();
   }, []);
 
@@ -175,7 +174,10 @@ const WalkExercises = () => {
       .catch((err) => console.log({ err }));
 
   return (
-    <PageSection title={t("Services.Sports.SportSessions")}>
+    <PageSection
+      title={t("Services.Sports.SportSessions")}
+      desc={t("Services.Sports.Desc")}
+    >
       <Fragment>
         <Form
           inputs={[

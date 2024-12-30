@@ -76,7 +76,6 @@ const MedicineConsumption = () => {
   };
 
   useEffect(() => {
-    // scheduleAPI.getAll().then((res: MealViewProps[][]) => setData(res));
     getData();
   }, []);
 
@@ -129,7 +128,10 @@ const MedicineConsumption = () => {
       .catch((err) => console.log({ err }));
 
   return (
-    <PageSection title={t("Services.Medicine.ConsumedMedicines")}>
+    <PageSection
+      title={t("Services.Medicine.ConsumedMedicines")}
+      desc={t("Services.Medicine.Desc")}
+    >
       <Fragment>
         <Form inputs={formInputs} onSubmit={onSubmit} />
 

@@ -444,7 +444,6 @@ const WeightReadings = () => {
   };
 
   useEffect(() => {
-    // scheduleAPI.getAll().then((res: MealViewProps[][]) => setData(res));
     getData();
   }, []);
 
@@ -623,7 +622,10 @@ const WeightReadings = () => {
   ];
 
   return (
-    <PageSection title={t("Services.WeightReadings.WeightReadings")}>
+    <PageSection
+      title={t("Services.WeightReadings.WeightReadings")}
+      desc={t("Services.WeightReadings.Desc")}
+    >
       <Fragment>
         <h4 className="my-3">
           {t("Services.WeightReadings.NumberOfWeightReading")}: {data.length}

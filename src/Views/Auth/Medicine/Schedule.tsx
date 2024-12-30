@@ -23,7 +23,6 @@ const MedicineSchedule = () => {
       .catch((err) => console.log({ err }));
 
   useEffect(() => {
-    // scheduleAPI.getAll().then((res: MealViewProps[][]) => setData(res));
     getData();
   }, []);
 
@@ -89,6 +88,7 @@ const MedicineSchedule = () => {
   return (
     <PageView
       title={t("Services.Medicine.MedicineSchedule")}
+      desc={t("Services.Medicine.Desc")}
       data={data}
       inputs={formInputs}
       onSubmit={onSubmit}

@@ -11,6 +11,7 @@ import { medicineProps, renderMedicineUI } from "../Medicine/Consumption";
 import { reliefProps, renderReliefUI } from "../Relief";
 import { renderSleepCycleUI, sleepCycleProps } from "../SleepCycles";
 import { renderExerciseUI, walkExerciseProps } from "../Sports";
+import { fastingProps, renderFastingUI } from "../Diet/Fasting";
 
 export interface SummaryProps {
   date: string;
@@ -24,6 +25,7 @@ export type comprehensiveProps = consumptionFullProps & {
   sleeps: sleepCycleProps[];
   watering: wateringProps[];
   reliefLogs: reliefProps[];
+  fasting: fastingProps[];
 };
 
 const WeeklyCalendar = ({
@@ -33,6 +35,7 @@ const WeeklyCalendar = ({
   sleepCyclesData,
   watering,
   reliefLogs,
+  fasting,
 }: {
   consumptionData: consumptionFullProps[];
   walkExercisesData: walkExerciseProps[];
@@ -40,6 +43,7 @@ const WeeklyCalendar = ({
   sleepCyclesData: sleepCycleProps[];
   watering: wateringProps[];
   reliefLogs: reliefProps[];
+  fasting: fastingProps[];
 }) => {
   const { t } = useTranslation();
 
@@ -112,6 +116,11 @@ const WeeklyCalendar = ({
             ({ endTime }) =>
               moment(data.timestamp).format("yyyy-MM-DD") ===
               moment(endTime).format("yyyy-MM-DD")
+          ),
+          fasting: fasting.filter(
+            ({ date }) =>
+              moment(data.timestamp).format("yyyy-MM-DD") ===
+              moment(date).format("yyyy-MM-DD")
           ),
           reliefLogs: [
             {
@@ -337,7 +346,7 @@ const WeeklyCalendar = ({
             <th>{t("Dashboard.Watering")}</th>
 
             {currentWeek?.map((day, x) => {
-              const theWalkExercises: comprehensiveProps | undefined =
+              const theRecord: comprehensiveProps | undefined =
                 currentWeekData?.find(
                   (dat) =>
                     moment(dat.timestamp).format("yyyy-MM-DD") ===
@@ -349,7 +358,7 @@ const WeeklyCalendar = ({
                   {renderEvents(
                     day.format("YYYY-MM-DD"),
                     renderWateringUI(),
-                    theWalkExercises?.watering
+                    theRecord?.watering
                   )}
                 </td>
               );
@@ -360,7 +369,7 @@ const WeeklyCalendar = ({
             <th>{t("Services.Relief.Relief")}</th>
 
             {currentWeek?.map((day, x) => {
-              const theWalkExercises: comprehensiveProps | undefined =
+              const theRecord: comprehensiveProps | undefined =
                 currentWeekData?.find(
                   (dat) =>
                     moment(dat.timestamp).format("yyyy-MM-DD") ===
@@ -372,7 +381,7 @@ const WeeklyCalendar = ({
                   {renderEvents(
                     day.format("YYYY-MM-DD"),
                     renderReliefUI(),
-                    theWalkExercises?.reliefLogs.map(({ time, ...rest }) => ({
+                    theRecord?.reliefLogs.map(({ time, ...rest }) => ({
                       ...rest,
                       date: moment(time).format("yyyy-MM-DD"),
                       time,
@@ -384,10 +393,33 @@ const WeeklyCalendar = ({
           </tr>
 
           <tr>
+            <th>{t("Services.Diet.Fasting.Fasting")}</th>
+
+            {currentWeek?.map((day, x) => {
+              const theRecord: comprehensiveProps | undefined =
+                currentWeekData?.find(
+                  (dat) =>
+                    moment(dat.timestamp).format("yyyy-MM-DD") ===
+                    day.format("yyyy-MM-DD")
+                );
+
+              return (
+                <td className="text-start align-top" key={x}>
+                  {renderEvents(
+                    day.format("YYYY-MM-DD"),
+                    renderFastingUI(),
+                    theRecord?.fasting
+                  )}
+                </td>
+              );
+            })}
+          </tr>
+
+          <tr>
             <th>{t("Dashboard.SportSessions")}</th>
 
             {currentWeek?.map((day, x) => {
-              const theWalkExercises: comprehensiveProps | undefined =
+              const theRecord: comprehensiveProps | undefined =
                 currentWeekData?.find(
                   (dat) =>
                     moment(dat.timestamp).format("yyyy-MM-DD") ===
@@ -399,7 +431,7 @@ const WeeklyCalendar = ({
                   {renderEvents(
                     day.format("YYYY-MM-DD"),
                     renderExerciseUI(),
-                    theWalkExercises?.sports
+                    theRecord?.sports
                   )}
                 </td>
               );
@@ -410,7 +442,7 @@ const WeeklyCalendar = ({
             <th>{t("Dashboard.Medicines")}</th>
 
             {currentWeek?.map((day, x) => {
-              const theWalkExercises: comprehensiveProps | undefined =
+              const theRecord: comprehensiveProps | undefined =
                 currentWeekData?.find(
                   (dat) =>
                     moment(dat.timestamp).format("yyyy-MM-DD") ===
@@ -422,7 +454,7 @@ const WeeklyCalendar = ({
                   {renderEvents(
                     day.format("YYYY-MM-DD"),
                     renderMedicineUI(),
-                    theWalkExercises?.medicines
+                    theRecord?.medicines
                   )}
                 </td>
               );
@@ -433,7 +465,7 @@ const WeeklyCalendar = ({
             <th>{t("Dashboard.SleepCycles")}</th>
 
             {currentWeek?.map((day, x) => {
-              const theWalkExercises: comprehensiveProps | undefined =
+              const theRecord: comprehensiveProps | undefined =
                 currentWeekData?.find(
                   (dat) =>
                     moment(dat.timestamp).format("yyyy-MM-DD") ===
@@ -445,7 +477,7 @@ const WeeklyCalendar = ({
                   {renderEvents(
                     day.format("YYYY-MM-DD"),
                     renderSleepCycleUI(),
-                    theWalkExercises?.sleeps.map(({ endTime, ...rest }) => ({
+                    theRecord?.sleeps.map(({ endTime, ...rest }) => ({
                       ...rest,
                       date: moment(endTime).format("yyyy-MM-DD"),
                       endTime,

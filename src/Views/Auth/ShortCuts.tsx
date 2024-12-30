@@ -7,6 +7,7 @@ import { wateringProps } from "./Diet/Watering";
 import { medicineProps } from "./Medicine/Consumption";
 import { medicineScheduleProps } from "./Medicine/Schedule";
 import { reliefProps } from "./Relief";
+import { fastingProps } from "./Diet/Fasting";
 
 const ShortCuts = () => {
   const { t } = useTranslation();
@@ -35,6 +36,14 @@ const ShortCuts = () => {
 
   const submitRelief = (values: reliefProps) => {
     BeAPI.create("relief", values)
+      .then(() => {
+        getData();
+      })
+      .catch((err) => console.log({ err }));
+  };
+
+  const submitFasting = (values: fastingProps) => {
+    BeAPI.create("fasting", values)
       .then(() => {
         getData();
       })
@@ -156,6 +165,28 @@ const ShortCuts = () => {
                 </button>
               </div>
             ))}
+        </div>
+
+        <div className="row align-items-center">
+          {/* Fasting Actions */}
+          <div className={`col-xs-12 col-lg-${2} my-4 text-start`}>
+            {t("Services.Diet.Fasting.Fasting")}
+          </div>
+
+          <div className={`col-xs-6 col-lg-${2} my-4`}>
+            <button
+              className="btn btn-primary text-white w-100"
+              type="button"
+              onClick={() =>
+                submitFasting({
+                  date: moment().format("yyyy-MM-DD"),
+                  breakTime: moment().format("HH:mm"),
+                })
+              }
+            >
+              {t("Services.Diet.Fasting.JustBrokeFasting")}
+            </button>
+          </div>
         </div>
       </Fragment>
     </PageSection>

@@ -54,7 +54,10 @@ const Schedule = () => {
   ];
 
   return (
-    <PageSection title={t("Services.Diet.Schedule.DietSchedules")}>
+    <PageSection
+      title={t("Services.Diet.Schedule.DietSchedules")}
+      desc={t("Services.Diet.Schedule.Desc")}
+    >
       <TabsView views={views} />
     </PageSection>
   );

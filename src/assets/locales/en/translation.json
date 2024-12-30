@@ -29,6 +29,7 @@
   "Dashboard": {
     "Dashboard": "Dashboard",
     "Data": "Data",
+    "Desc": "View your weekly summary of all covered services data.",
     "GenerateSummary": "Generate Summary",
     "Medicines": "Medicines",
     "NextWeek": "Next Week",
@@ -72,10 +73,6 @@
       "Content": "Health Empowerment and Lifestyle is developed by me Suhaib Ahmad, a passionate about improving health through technology This project is open-source, and I am excited to welcome contributions from developers, designers, and wellness enthusiasts around the world",
       "Title": "Meet the Developer"
     },
-    "ExerciseTracking": {
-      "Desc": "Log your physical activities, including sports, workouts, and walks",
-      "Title": "Exercise Tracking"
-    },
     "Firebase": "Firebase",
     "Future": {
       "Content": "Health Empowerment and Lifestyle is growing, and we have big plans to make it even more powerful and user-friendly. With your support, we aim to add new features, improve accessibility, and build a community around wellness. This is part of what we have in mind to develop for future expansions.",
@@ -86,21 +83,9 @@
       "Title": "Goal Setting"
     },
     "Health Empowerment and Lifestyle is built with a modern technology stack, designed to provide a smooth and secure experience": "Health Empowerment and Lifestyle is built with a modern technology stack, designed to provide a smooth and secure experience",
-    "HydrationLogging": {
-      "Desc": "Record your water intake to maintain optimal hydration levels",
-      "Title": "Hydration Logging"
-    },
     "Localization": {
       "Desc": "Support for multiple languages, including Arabic",
       "Title": "Localization"
-    },
-    "MealScheduling": {
-      "Desc": "Stay on track with your nutrition plan by logging and following scheduled meals",
-      "Title": "Meal Scheduling"
-    },
-    "MedicationFollowUp": {
-      "Desc": "Never miss a dose by keeping track of your medications and supplements",
-      "Title": "Medication Follow-Up"
     },
     "MobileApp": {
       "Desc": "A dedicated app for tracking health on the go",
@@ -132,10 +117,6 @@
       "Desc": "Notifications for meals, workouts, medications, and more",
       "Title": "Set Reminders"
     },
-    "SleepCycleMonitoring": {
-      "Desc": "Monitor and improve your sleep patterns for better rest and recovery",
-      "Title": "Sleep Cycle Monitoring"
-    },
     "StartUsing": {
       "Content": "Health Empowerment and Lifestyle is already deployed and ready to use, so you can simply sign up through the link above and start using it today!",
       "Title": "Start Using HEAL"
@@ -149,10 +130,6 @@
       "Title": "Technical Support"
     },
     "Technology Stack": "Technology Stack",
-    "WeightTracking": {
-      "Desc": "Log and monitor your weight, with support for inBody scale or any detailed-reading providers",
-      "Title": "Weight Tracking"
-    },
     "Welcome": "Welcome to Health Empowerment and Lifestyle (HEAL)",
     "WhatIs": {
       "Content": "Health Empowerment and Lifestyle (HEAL) is a comprehensive web app designed to help individuals track their health-related activities and stay consistent with their wellness goals. From daily routines like diet and hydration to broader metrics like sleep and weight tracking, HEAL makes it simple to log, monitor, and analyze your progress.",
@@ -162,13 +139,13 @@
   "Layout": {
     "All Rights Reserved for": "All Rights Reserved for",
     "App Manual": "App Manual",
+    "AppFullName": "HEAL | Health Empowerment and Lifestyle",
     "Called": "Call",
     "Consumption": "Consumption",
     "Created": "Creation",
     "Dashboard": "Dashboard",
     "Deleted": "Deletion",
     "Diet": "Diet",
-    "AppFullName": "HEAL | Health Empowerment and Lifestyle",
     "LabTests": "Lab Tests",
     "Medicine": "Medicine",
     "Schedule": "Schedule",
@@ -189,6 +166,7 @@
       "Title": "Dashboard"
     },
     "Date": "Date",
+    "Desc": "A helping guideline to understand the purpose of services included and how to engage them.",
     "DietConsumption": "Diet Consumption",
     "DietConsumptionDesc": "Record actual consumption of foods and beverages, compare it with scheduled meal contents. Records are shown in a weekly-based view calendar.",
     "DietConsumptionHowItWorks1": "Pick a scheduled meal to auto-fill the supposed-to-consume elements.",
@@ -268,8 +246,17 @@
         "Unit": "Unit",
         "Yes": "Yes"
       },
+      "Fasting": {
+        "Date": "Date",
+        "Desc": "Track your fasting days and length of fasting in hours.",
+        "FastBreakingTime": "Fast Breaking Time",
+        "Fasting": "Fasting",
+        "JustBrokeFasting": "Just Broke Fasting",
+        "Notes": "Notes"
+      },
       "Schedule": {
         "Alternatives": "Alternatives",
+        "Desc": "Stay on track with your nutrition plan by logging and following scheduled meals",
         "DietSchedules": "Diet Schedules",
         "Element": "Element",
         "GivingDate": "Giving Date",
@@ -288,8 +275,10 @@
         "Unit": "Unit"
       },
       "Watering": {
+        "Desc": "Record your water intake to maintain optimal hydration levels",
         "Quantity": "Quantity 'In Cup(s)'",
         "Time": "Time",
+        "Title": "Hydration Logging",
         "Watering": "Watering"
       }
     },
@@ -306,6 +295,7 @@
       "CorrectedCalcium": "Corrected Calcium",
       "Creatinine": "Creatinine",
       "Date": "Date",
+      "Desc": "Input and checkout the results of lab tests you conduct.",
       "Eosinophils": "Eosinophils",
       "FastingBloodSugar": "Fasting Blood Sugar",
       "FastingInsulin": "Fasting Insulin",
@@ -357,6 +347,7 @@
       "ConsumptionFrequency": "Consumption Frequency",
       "Daily": "Daily",
       "Date": "Date",
+      "Desc": "Never miss a dose by keeping track of your medications and supplements",
       "Dose": "Specifics (Dose)",
       "Duration": "Duration (Frequency Total Occurrences)",
       "Medicine": "Medicine",
@@ -365,9 +356,11 @@
       "OccurrenceQuantity": "Per Frequency Occurrence Quantity",
       "Quantity": "Quantity",
       "Time": "Time",
+      "Title": "Medication Follow-Up",
       "Weekly": "Weekly"
     },
     "Relief": {
+      "Desc": "Document your relief exercises along the day as a health indicator.",
       "Notes": "Notes",
       "Number1": "Number 1",
       "Number2": "Number 2",
@@ -377,13 +370,16 @@
       "Type": "Type"
     },
     "SleepCycles": {
+      "Desc": "Monitor and improve your sleep patterns for better rest and recovery",
       "EndTime": "End Time",
       "Notes": "Notes",
       "SleepCycles": "Sleep Cycles",
-      "StartTime": "Start Time"
+      "StartTime": "Start Time",
+      "Title": "Sleep Cycle Monitoring"
     },
     "Sports": {
       "Date": "Date",
+      "Desc": "Log your physical activities, including sports, workouts, and walks",
       "EndTime": "End Time",
       "Jogging": "Jogging",
       "Measure (Walked Distance, Swimming Time, etc)": "Measure (Walked Distance, Swimming Time, ...etc)",
@@ -393,11 +389,13 @@
       "SportSessions": "Sport Sessions",
       "StartTime": "Start Time",
       "Swimming": "Swimming",
+      "Title": "Exercise Tracking",
       "Walking": "Walking"
     },
     "WeightReadings": {
       "Actions": "Actions",
       "Date": "Date",
+      "Desc": "Log and monitor your weight, with support for inBody scale or any detailed-reading providers",
       "FatWeight": "Fat Weight",
       "FatWeightMaxTarget": "Fat Weight Max Target",
       "FatWeightMinTarget": "Fat Weight Min Target",
@@ -408,6 +406,7 @@
       "MusclesReading": "Muscles Reading",
       "NumberOfWeightReading": "Total Number of Weight Readings (Nutritionist Weekly Visits)",
       "Targets": "Targets",
+      "Title": "Weight Tracking",
       "WaistFat": "Waist Fat",
       "WaistFat Reading": "Waist Fat Reading",
       "WaistFatMaxTarget": "Waist Fat Max Target",

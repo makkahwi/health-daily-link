@@ -6,15 +6,16 @@ import PageTable from "./Table";
 
 interface props {
   title: string;
+  desc?: string;
   data: { id?: string }[];
   inputs: inputProps[];
   onSubmit: (x: any) => void;
   onDelete: Function;
 }
 
-const PageView = ({ title, data, inputs, onSubmit, onDelete }: props) => {
+const PageView = ({ title, desc, data, inputs, onSubmit, onDelete }: props) => {
   return (
-    <PageSection title={title}>
+    <PageSection title={title} desc={desc}>
       <Fragment>
         <Form inputs={inputs} onSubmit={onSubmit} />
 

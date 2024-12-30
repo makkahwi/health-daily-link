@@ -66,7 +66,6 @@ const SleepCycles = () => {
       .catch((err) => console.log({ err }));
 
   useEffect(() => {
-    // scheduleAPI.getAll().then((res: MealViewProps[][]) => setData(res));
     getData();
   }, []);
 
@@ -105,7 +104,10 @@ const SleepCycles = () => {
       .catch((err) => console.log({ err }));
 
   return (
-    <PageSection title={t("Services.SleepCycles.SleepCycles")}>
+    <PageSection
+      title={t("Services.SleepCycles.SleepCycles")}
+      desc={t("Services.SleepCycles.Desc")}
+    >
       <Fragment>
         <Form inputs={formInputs} onSubmit={onSubmit} />
 

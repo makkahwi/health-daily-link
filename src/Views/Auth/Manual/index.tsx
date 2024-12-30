@@ -152,7 +152,7 @@ const ManualView = () => {
   ];
 
   return (
-    <PageSection title={t("Manual.UserManual")}>
+    <PageSection title={t("Manual.UserManual")} desc={t("Manual.Desc")}>
       <div className="my-5">
         <div className="accordion" id="manualAccordion">
           {manualData.map((section, i) => (

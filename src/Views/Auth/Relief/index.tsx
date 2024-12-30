@@ -70,7 +70,6 @@ const Relief = () => {
       .catch((err) => console.log({ err }));
 
   useEffect(() => {
-    // scheduleAPI.getAll().then((res: MealViewProps[][]) => setData(res));
     getData();
   }, []);
 
@@ -110,7 +109,10 @@ const Relief = () => {
       .catch((err) => console.log({ err }));
 
   return (
-    <PageSection title={t("Services.Relief.Relief")}>
+    <PageSection
+      title={t("Services.Relief.Relief")}
+      desc={t("Services.Relief.Desc")}
+    >
       <Fragment>
         <Form inputs={formInputs} onSubmit={onSubmit} />
 

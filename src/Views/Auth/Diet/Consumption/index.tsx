@@ -237,7 +237,10 @@ const Consumption = () => {
       .catch((err) => console.log({ err }));
 
   return (
-    <PageSection title={t("Services.Diet.Consumption.Consumed Meals")}>
+    <PageSection
+      title={t("Services.Diet.Consumption.Consumed Meals")}
+      desc={t("Services.Diet.Schedule.Desc")}
+    >
       <Fragment>
         <Form inputs={formInputs} onSubmit={onSubmit} />
 

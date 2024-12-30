@@ -4,6 +4,8 @@ import {
   faFileMedical,
   faPills,
   faRunning,
+  faStarAndCrescent,
+  faSun,
   faToilet,
   faUtensils,
   faWater,
@@ -33,6 +35,7 @@ import "./App.css";
 import "./index.css";
 import "./Style/custom.scss";
 import Relief from "./Views/Auth/Relief";
+import Fasting from "./Views/Auth/Diet/Fasting";
 
 export const routes = [
   {
@@ -57,6 +60,12 @@ export const routes = [
         path: "watering",
         icon: faWater,
         Comp: <Watering />,
+      },
+      {
+        name: i18n.t("Services.Diet.Fasting.Fasting"),
+        path: "fasting",
+        icon: faStarAndCrescent,
+        Comp: <Fasting />,
       },
     ],
   },
